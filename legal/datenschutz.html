@@ -13,10 +13,10 @@
 <body>
 
 <nav class="legal-nav">
-  <a href="../PHONE Landing.html" class="logo">
+  <a href="../index.html" class="logo">
     <img src="logo_schrift_weis.png" alt="PHONĒ">
   </a>
-  <a href="../PHONE Landing.html" class="back">
+  <a href="../index.html" class="back">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     Zurück
   </a>
@@ -55,8 +55,8 @@
     <h2 id="a1"><span class="num">01.</span> Verantwortlicher</h2>
     <p>
       Verantwortlich für die Datenverarbeitung im Sinne der DSGVO ist:<br>
-      <strong>Simon Nikel</strong>, Musterstraße 12, 10115 Berlin, Deutschland.<br>
-      E‑Mail: <a href="mailto:privacy@phone-app.de">privacy@phone-app.de</a>
+      <strong>Simon Nikel</strong>, Gartenstraße 27, 56581 Melsbach, Deutschland.<br>
+      E‑Mail: <a href="mailto:phone@simonnikel.de">phone@simonnikel.de</a>
     </p>
 
     <h2 id="a2"><span class="num">02.</span> Welche Daten wir verarbeiten</h2>
@@ -69,7 +69,7 @@
 
     <h2 id="a3"><span class="num">03.</span> Audio‑Aufnahmen &amp; KI‑Analyse</h2>
     <p>
-      Audio‑Dateien werden Ende‑zu‑Ende‑verschlüsselt zu unseren Servern übertragen. Die Transkription erfolgt durch <strong>OpenAI Whisper</strong>; die anschließende inhaltliche Analyse (Symbole, Bibelverse, Reflexionsfragen) durch <strong>Google Gemini</strong>. Beide Anbieter verarbeiten deine Daten ausschließlich im Auftrag und löschen sie nach der Verarbeitung.
+      Audio‑Dateien werden Ende‑zu‑Ende‑verschlüsselt zu unseren Servern übertragen. Die Transkription erfolgt durch <strong>OpenAI Whisper</strong> (OpenAI L.L.C., USA); die anschließende inhaltliche Analyse (Symbole, Bibelverse, Reflexionsfragen) durch <strong>Qwen AI</strong> (Alibaba Cloud, EU/Worldwide). Beide Anbieter verarbeiten deine Daten ausschließlich im Auftrag und löschen sie nach der Verarbeitung.
     </p>
     <h3>Speicherort</h3>
     <p>Aufnahmen und Transkripte werden in <strong>Firebase Storage</strong> (Region <code>europe-west3</code>, Frankfurt) gespeichert.</p>
@@ -78,17 +78,34 @@
     <ul>
       <li>Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO) — Bereitstellung der App‑Funktionen.</li>
       <li>Berechtigtes Interesse (Art. 6 Abs. 1 lit. f DSGVO) — Stabilität, Sicherheit, Missbrauchsabwehr.</li>
-      <li>Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) — optionale Funktionen wie Push‑Benachrichtigungen oder Apple Watch Sync.</li>
+      <li>Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) — KI‑gestützte Transkription und Analyse, internationaler Datentransfer (USA/China), optionale Funktionen wie Push‑Benachrichtigungen.</li>
     </ul>
+
+    <h3>Sensible Daten (Art. 9 DSGVO)</h3>
+    <p>
+      Träume und prophetische Inhalte können besondere Kategorien personenbezogener Daten enthalten (z. B. religiöse Überzeugungen). Diese werden ausschließlich auf Grundlage deiner ausdrücklichen Einwilligung verarbeitet.
+    </p>
+
+    <h3>Einwilligungsmanagement</h3>
+    <p>
+      Beim ersten Start der App wirst du aktiv um Einwilligung gebeten für: die Verarbeitung deiner Audio‑/Textdaten durch KI‑Drittanbieter sowie den internationalen Datentransfer (USA/China). Du kannst deine Einwilligung jederzeit in den App‑Einstellungen widerrufen oder uns kontaktieren.
+    </p>
 
     <h2 id="a5"><span class="num">05.</span> Drittanbieter &amp; Auftragsverarbeiter</h2>
     <ul>
       <li><strong>Google Firebase</strong> (Authentication, Firestore, Storage, Functions) — Google Ireland Ltd.</li>
       <li><strong>OpenAI</strong> (Whisper Transkription) — Auftragsverarbeitung gemäß Art. 28 DSGVO.</li>
-      <li><strong>Google Gemini</strong> (KI‑Analyse) — Auftragsverarbeitung gemäß Art. 28 DSGVO.</li>
+      <li><strong>Qwen AI / Alibaba Cloud</strong> (KI‑Analyse) — Alibaba Cloud, EU/Worldwide. Für Transfers außerhalb der EU gelten Standardvertragsklauseln (SCCs). Auftragsverarbeitung gemäß Art. 28 DSGVO.</li>
       <li><strong>Apple App Store / Apple Sign‑in</strong> — Apple Distribution Intl.</li>
       <li><strong>RevenueCat</strong> (Abo‑Verwaltung Premium) — RevenueCat Inc., USA, Standardvertragsklauseln.</li>
     </ul>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="ico">⚖️</div>
+      <div>
+        <strong>Hinweis zu DSGVO / Internationale Transfers:</strong> Einige Anbieter haben ihren Sitz außerhalb der EU/des EWR (z. B. USA, China). Die Datenübertragung erfolgt auf Grundlage des EU–US Data Privacy Framework (für zertifizierte Anbieter), EU‑Standardvertragsklauseln (SCCs) sowie deiner ausdrücklichen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
+      </div>
+    </div>
 
     <h2 id="a6"><span class="num">06.</span> Speicherdauer</h2>
     <p>
@@ -106,7 +123,7 @@
       <li>Widerspruch (Art. 21 DSGVO)</li>
       <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
     </ul>
-    <p>Anfragen richtest du an <a href="mailto:privacy@phone-app.de">privacy@phone-app.de</a>.</p>
+    <p>Anfragen richtest du an <a href="mailto:phone@simonnikel.de">phone@simonnikel.de</a>.</p>
 
     <h2 id="a8"><span class="num">08.</span> Sicherheit</h2>
     <p>
@@ -127,7 +144,7 @@
       <span class="sep"></span>
       <a href="datenschutz.html">Datenschutz</a>
       <span class="sep"></span>
-      <a href="agb.html">AGB</a>
+      <a href="agb.html">Nutzungsbedingungen</a>
       <span class="sep"></span>
       <a href="kontakt.html">Kontakt &amp; Support</a>
     </div>
