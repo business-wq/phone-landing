@@ -7,7 +7,6 @@ RUN rm -rf ./*
 
 # Copy static website files directly (no build step needed)
 COPY index.html .
-COPY PHONE\ Landing.html .
 COPY assets/ ./assets/
 COPY legal/ ./legal/
 
