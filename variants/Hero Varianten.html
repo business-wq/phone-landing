@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>PHONĒ — Hero Varianten</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #0a0a0c; font-family: "Poppins", system-ui, sans-serif; }
+  .serif { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; }
+  .mono { font-family: "DM Mono", ui-monospace, monospace; }
+
+  /* ============ Variant A — Editorial / Magazine ============ */
+  .va {
+    width: 1440px; height: 900px;
+    background: #f6f3ee; color: #14110d;
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 1.1fr .9fr;
+    padding: 56px 72px;
+    gap: 40px;
+  }
+  .va .nav {
+    position: absolute; top: 32px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+  }
+  .va .nav-logo { font-family: "Instrument Serif", serif; font-style: italic; font-size: 28px; letter-spacing: -.5px; }
+  .va .nav-links { display: flex; gap: 28px; color: rgba(20,17,13,.6); }
+  .va .nav-cta { background: #14110d; color: #f6f3ee; padding: 9px 18px; border-radius: 999px; font-weight: 600; font-size: 13px; }
+  .va .left { padding-top: 90px; display: flex; flex-direction: column; justify-content: center; }
+  .va .eyebrow { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(20,17,13,.5); margin-bottom: 28px; display:flex; align-items:center; gap:14px; }
+  .va .eyebrow::before { content:''; width: 40px; height: 1px; background: rgba(20,17,13,.4); }
+  .va h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 110px; line-height: .92; letter-spacing: -2px; margin: 0 0 28px; }
+  .va h1 em { font-style: italic; color: #C8462C; }
+  .va .lead { font-size: 19px; line-height: 1.55; max-width: 480px; color: rgba(20,17,13,.75); margin-bottom: 36px; }
+  .va .ctas { display: flex; gap: 14px; align-items: center; }
+  .va .btn-primary { background: #14110d; color: #f6f3ee; padding: 16px 28px; border-radius: 999px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 10px; }
+  .va .btn-link { color: rgba(20,17,13,.7); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+  .va .right { position: relative; display: flex; align-items: center; justify-content: center; padding-top: 60px; }
+  .va .photo {
+    width: 100%; aspect-ratio: 3/4;
+    background: url('../assets/landing/onboarding_1.png') center/cover;
+    border-radius: 8px;
+    box-shadow: 0 40px 80px rgba(0,0,0,.25);
+  }
+  .va .photo-caption {
+    position: absolute; bottom: 30px; left: 30px; right: 30px;
+    font-family: "Instrument Serif", serif; font-style: italic;
+    color: #f6f3ee; font-size: 18px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  }
+  .va .meta-row {
+    position: absolute; bottom: 40px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(20,17,13,.5);
+    border-top: 1px solid rgba(20,17,13,.15);
+    padding-top: 18px;
+  }
+
+  /* ============ Variant B — Brutalist / Type-driven dark ============ */
+  .vb {
+    width: 1440px; height: 900px;
+    background: #0a0a0c; color: #f5f4f1;
+    position: relative; overflow: hidden;
+    padding: 56px 72px;
+  }
+  .vb .nav { display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .vb .nav-logo img { height: 22px; }
+  .vb .nav-links { display: flex; gap: 32px; color: rgba(255,255,255,.6); }
+  .vb .nav-cta { background: #fff; color: #000; padding: 9px 18px; border-radius: 999px; font-weight: 600; }
+  .vb .grid { margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: end; }
+  .vb .col-tag { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.4); border-top: 1px solid rgba(255,255,255,.15); padding-top: 14px; margin-bottom: 18px; }
+  .vb .stack {
+    background: linear-gradient(180deg, rgba(255,45,85,.18), rgba(255,45,85,0));
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    padding: 24px;
+    aspect-ratio: 9/14;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    background-image:
+      linear-gradient(180deg, rgba(10,10,12,.2), rgba(10,10,12,.92)),
+      url('../assets/landing/onboarding_2.png');
+    background-size: cover; background-position: center;
+  }
+  .vb .stack-meta { display:flex; justify-content: space-between; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: 1px; color: rgba(255,255,255,.7); margin-bottom: 12px; }
+  .vb .stack h3 { font-size: 22px; margin: 0; line-height: 1.1; }
+  .vb h1 {
+    font-size: 200px; line-height: .82; margin: 0;
+    font-weight: 700; letter-spacing: -8px;
+    grid-column: 1 / 3;
+  }
+  .vb h1 .hl { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: #FF2D55; letter-spacing: -4px; }
+  .vb .lead-col { padding-bottom: 8px; }
+  .vb .lead-col p { font-size: 17px; line-height: 1.55; color: rgba(255,255,255,.75); margin: 0 0 24px; }
+  .vb .ctas { display: flex; gap: 12px; }
+  .vb .btn-primary { background: #FF2D55; color: #fff; padding: 14px 22px; border-radius: 999px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+  .vb .btn-ghost { background: transparent; color: #fff; padding: 14px 22px; border-radius: 999px; font-weight: 500; font-size: 14px; border: 1px solid rgba(255,255,255,.2); }
+  .vb .ticker {
+    position: absolute; bottom: 24px; left: 0; right: 0;
+    display: flex; gap: 60px;
+    font-family: "DM Mono", monospace; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,.45); white-space: nowrap;
+    padding: 18px 72px;
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+  .vb .ticker span { display: flex; align-items: center; gap: 14px; }
+  .vb .ticker span::after { content: '★'; color: #FF2D55; }
+
+  /* ============ Variant C — Soft / Sacred / Glow ============ */
+  .vc {
+    width: 1440px; height: 900px;
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(255,180,150,.45), transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(180,140,255,.25), transparent 60%),
+      linear-gradient(180deg, #1a0f15 0%, #0a0a0c 80%);
+    color: #f5f4f1;
+    padding: 56px 72px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .vc .nav { width: 100%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+  .vc .nav-logo img { height: 22px; }
+  .vc .nav-links { display: flex; gap: 32px; color: rgba(255,255,255,.6); }
+  .vc .nav-cta { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 9px 18px; border-radius: 999px; font-weight: 600; backdrop-filter: blur(10px); }
+  .vc .badge {
+    margin-top: 80px;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+    padding: 8px 16px; border-radius: 999px;
+    font-size: 13px; backdrop-filter: blur(10px);
+  }
+  .vc .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #FF2D55; box-shadow: 0 0 12px #FF2D55; }
+  .vc h1 {
+    font-size: 96px; line-height: .98; letter-spacing: -2px; font-weight: 300;
+    text-align: center; margin: 32px 0 28px; max-width: 1100px;
+  }
+  .vc h1 .hl { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; }
+  .vc h1 .hl::after { content: ''; display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: #FF2D55; box-shadow: 0 0 30px #FF2D55; margin-left: 14px; vertical-align: middle; }
+  .vc .lead { font-size: 19px; line-height: 1.5; color: rgba(255,255,255,.75); max-width: 620px; text-align: center; margin: 0 0 36px; }
+  .vc .ctas { display: flex; gap: 14px; }
+  .vc .btn-primary { background: #fff; color: #000; padding: 14px 26px; border-radius: 999px; font-weight: 600; font-size: 14px; display:inline-flex; align-items:center; gap:8px; }
+  .vc .btn-ghost { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: #fff; padding: 14px 26px; border-radius: 999px; font-weight: 500; font-size: 14px; backdrop-filter: blur(10px); }
+  .vc .phone-row {
+    margin-top: 50px; display: flex; gap: 24px; align-items: flex-end;
+    perspective: 1400px;
+  }
+  .vc .pf {
+    width: 220px; aspect-ratio: 9/19;
+    background: linear-gradient(135deg, #28282c, #0a0a0c);
+    border-radius: 38px; padding: 6px;
+    box-shadow: 0 60px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.08);
+  }
+  .vc .pf img { width: 100%; height: 100%; border-radius: 32px; object-fit: cover; display: block; }
+  .vc .pf.center { width: 280px; transform: translateY(-20px); }
+  .vc .pf.left { transform: rotate(-6deg) translateY(20px); }
+  .vc .pf.right { transform: rotate(6deg) translateY(20px); }
+
+  /* shared icon paths */
+  .ic-apple { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+const AppleIcon = () => (
+  <svg className="ic-apple" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+);
+
+const VariantA = () => (
+  <div className="va">
+    <div className="nav">
+      <div className="nav-logo">PHONĒ</div>
+      <div className="nav-links">
+        <a>Wie es funktioniert</a>
+        <a>Features</a>
+        <a>Stimmen</a>
+      </div>
+      <a className="nav-cta">App Store →</a>
+    </div>
+    <div className="left">
+      <div className="eyebrow">Vol. 01 · 2026 · Voice Journal</div>
+      <h1>Halte fest,<br/>was der<br/><em>Himmel</em> sagt.</h1>
+      <p className="lead">Ein voice‑first Audio‑Journal für Prophetien und Träume. Sprich es aus — die App hält es fest, lernt deine Symbole und erkennt, wann es sich erfüllt.</p>
+      <div className="ctas">
+        <a className="btn-primary"><AppleIcon/> Im App Store laden</a>
+        <a className="btn-link">Wie es funktioniert</a>
+      </div>
+    </div>
+    <div className="right">
+      <div className="photo">
+        <div className="photo-caption">"Über das Feld floss Wasser, und mitten darin stand eine Tür."</div>
+      </div>
+    </div>
+    <div className="meta-row">
+      <span>Issue 01 — Halte fest</span>
+      <span>·</span>
+      <span>iOS 17+ · Apple Watch · Widgets</span>
+      <span>·</span>
+      <span>Verfügbar im App Store</span>
+    </div>
+  </div>
+);
+
+const VariantB = () => (
+  <div className="vb">
+    <div className="nav">
+      <div className="nav-logo"><img src="../assets/landing/logo_schrift_weis.png" alt=""/></div>
+      <div className="nav-links">
+        <a>Wie</a><a>Features</a><a>Stimmen</a><a>Download</a>
+      </div>
+      <a className="nav-cta">App Store</a>
+    </div>
+    <div className="grid">
+      <h1>SPRICH<br/>ES <span className="hl">aus.</span></h1>
+      <div className="lead-col">
+        <div className="col-tag">001 — Mission</div>
+        <p>Das Sprechen Gottes verwalten — wie ein Sohn, wie eine Tochter. PHONĒ hält jedes Wort fest und zeigt dir, wann es sich erfüllt.</p>
+        <div className="ctas">
+          <a className="btn-primary"><AppleIcon/> App Store</a>
+          <a className="btn-ghost">Wie es funktioniert</a>
+        </div>
+      </div>
+      <div className="stack">
+        <div className="stack-meta"><span>5.0 ★</span><span>iOS 17+</span></div>
+        <h3>Voice‑first.<br/>Tief geführt.</h3>
+      </div>
+    </div>
+    <div className="ticker">
+      <span>Prophetie festhalten</span>
+      <span>Träume verstehen</span>
+      <span>Symbole archivieren</span>
+      <span>Erfüllung tracken</span>
+      <span>Voice‑first</span>
+    </div>
+  </div>
+);
+
+const VariantC = () => (
+  <div className="vc">
+    <div className="nav">
+      <div className="nav-logo"><img src="../assets/landing/logo_schrift_weis.png" alt=""/></div>
+      <div className="nav-links">
+        <a>Wie es funktioniert</a><a>Features</a><a>Stimmen</a>
+      </div>
+      <a className="nav-cta">App Store →</a>
+    </div>
+    <div className="badge"><span className="dot"></span> Jetzt im App Store · iOS 17+</div>
+    <h1>Halte fest, was der <span className="hl">Himmel</span><br/>dir sagt.</h1>
+    <p className="lead">Voice‑first Audio‑Journal für Prophetien und Träume. Sprich es aus — die App lernt deine Symbole und zeigt, wann sich Worte erfüllen.</p>
+    <div className="ctas">
+      <a className="btn-primary"><AppleIcon/> App Store laden</a>
+      <a className="btn-ghost">Wie es funktioniert</a>
+    </div>
+    <div className="phone-row">
+      <div className="pf left"><img src="../assets/landing/screen_1.png" alt=""/></div>
+      <div className="pf center"><img src="../assets/landing/screen_hero.png" alt=""/></div>
+      <div className="pf right"><img src="../assets/landing/screen_3.png" alt=""/></div>
+    </div>
+  </div>
+);
+
+const App = () => (
+  <DesignCanvas title="PHONĒ — Hero Varianten" subtitle="3 Richtungen für die Landingpage">
+    <DCSection id="heros" title="Hero Sections">
+      <DCArtboard id="va" label="A — Editorial / Magazin" width={1440} height={900}>
+        <VariantA/>
+      </DCArtboard>
+      <DCArtboard id="vb" label="B — Brutalist / Type-driven" width={1440} height={900}>
+        <VariantB/>
+      </DCArtboard>
+      <DCArtboard id="vc" label="C — Soft / Sacred / Glow" width={1440} height={900}>
+        <VariantC/>
+      </DCArtboard>
+    </DCSection>
+  </DesignCanvas>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+
+</body>
+</html>
