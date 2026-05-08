@@ -1,0 +1,1310 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <title>PHONĒ — Halte fest, was der Himmel dir sagt</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="PHONĒ — Halte fest, was der Himmel dir sagt. Verfügbar im App Store.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --text: #f5f4f1;
+      --muted: #8a8a92;
+      --line: rgba(255, 255, 255, .08);
+      --line-2: rgba(255, 255, 255, .14);
+      --brand: #FF2D55;
+      --brand-soft: #ff4f72;
+      --green: #34C759;
+      --blue: #5B6BFF;
+      --yellow: #FFCC00;
+      --purple: #BF5AF2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: "Poppins", -apple-system, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .serif {
+      font-family: "Instrument Serif", "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .stage {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse 78% 42% at 50% -10%, rgba(255, 255, 255, .22), rgba(255, 255, 255, .08) 32%, transparent 72%),
+        linear-gradient(180deg, #202026 0%, #111116 44%, #070709 100%);
+    }
+
+    .stage::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .35;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      mix-blend-mode: overlay;
+    }
+
+    /* Logo top-left */
+    .top-logo {
+      position: absolute;
+      top: 28px;
+      left: 32px;
+      z-index: 50;
+    }
+
+    .top-logo img {
+      height: 22px;
+      opacity: .95;
+    }
+
+    /* Footer mark bottom */
+    .bot-mark {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      color: rgba(255, 255, 255, .4);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    /* Footer social bottom-left + links bottom-right */
+    .social-links {
+      position: absolute;
+      bottom: 22px;
+      left: 28px;
+      z-index: 50;
+      display: flex;
+      gap: 16px;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .social-links a {
+      display: grid;
+      width: 16px;
+      height: 16px;
+      place-items: center;
+      transition: color .2s ease;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+    }
+
+    .social-links svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    /* Footer links bottom-right */
+    .foot-links {
+      position: absolute;
+      bottom: 22px;
+      right: 28px;
+      z-index: 50;
+      display: flex;
+      gap: 18px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .foot-links a {
+      transition: color .2s ease;
+      position: relative;
+    }
+
+    .foot-links a:hover {
+      color: #fff;
+    }
+
+    .foot-links .sep {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      align-self: center;
+    }
+
+    /* Center content */
+    .center {
+      position: relative;
+      z-index: 30;
+      text-align: center;
+      max-width: 760px;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px 6px 8px;
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .04);
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: rgba(255, 255, 255, .78);
+      margin-bottom: 28px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 12px var(--brand);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 96px);
+      line-height: .98;
+      font-weight: 600;
+      letter-spacing: -.035em;
+      margin: 0 0 22px;
+      text-wrap: balance;
+    }
+
+    h1 .accent {
+      color: var(--brand);
+    }
+
+    p.lead {
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: rgba(255, 255, 255, .72);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      text-wrap: pretty;
+    }
+
+    .appstore-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 26px;
+      background: #fff;
+      color: #000;
+      border-radius: 16px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .appstore-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(255, 255, 255, .2);
+    }
+
+    .appstore-btn .small {
+      font-size: 11px;
+      line-height: 1;
+      opacity: .7;
+    }
+
+    .appstore-btn .big {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    /* Connection threads SVG layer */
+    .threads {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .thread-line {
+      fill: none;
+      stroke: rgba(255, 255, 255, .16);
+      stroke-width: .6;
+      stroke-dasharray: 3 5;
+      animation: dash 90s linear infinite;
+    }
+
+    .thread-line.brand {
+      stroke: rgba(255, 45, 85, .32);
+    }
+
+    .thread-line.blue {
+      stroke: rgba(91, 107, 255, .32);
+    }
+
+    .thread-line.green {
+      stroke: rgba(52, 199, 89, .32);
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -200;
+      }
+    }
+
+    .thread-dot {
+      fill: rgba(255, 255, 255, .7);
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, .6));
+    }
+
+    .thread-dot.brand {
+      fill: var(--brand);
+      filter: drop-shadow(0 0 6px var(--brand));
+    }
+
+    .thread-dot.blue {
+      fill: var(--blue);
+      filter: drop-shadow(0 0 6px var(--blue));
+    }
+
+    .thread-dot.green {
+      fill: var(--green);
+      filter: drop-shadow(0 0 6px var(--green));
+    }
+
+    .thread-dot.yellow {
+      fill: var(--yellow);
+      filter: drop-shadow(0 0 6px var(--yellow));
+    }
+
+    .thread-dot.purple {
+      fill: var(--purple);
+      filter: drop-shadow(0 0 6px var(--purple));
+    }
+
+    /* Floating items — pills, labels, notifications */
+    .floater {
+      position: absolute;
+      z-index: 10;
+      will-change: transform;
+      animation-name: drift;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(0, 0) rotate(var(--rot, 0deg));
+      }
+
+      50% {
+        transform: translate(var(--dx, 8px), var(--dy, -10px)) rotate(calc(var(--rot, 0deg) + var(--rotd, 1deg)));
+      }
+
+      100% {
+        transform: translate(calc(var(--dx, 8px) * -.5), calc(var(--dy, -10px) * -1)) rotate(calc(var(--rot, 0deg) - var(--rotd, 1deg)));
+      }
+    }
+
+    /* Notification card (stylized iOS) */
+    .notif {
+      width: 280px;
+      background: rgba(22, 22, 26, .85);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid var(--line-2);
+      border-radius: 18px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+    }
+
+    .notif .ic {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: var(--brand);
+    }
+
+    .notif .ic.blue {
+      background: var(--blue);
+    }
+
+    .notif .ic.green {
+      background: var(--green);
+    }
+
+    .notif .ic svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .notif .body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .notif .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .notif .app {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: rgba(255, 255, 255, .7);
+      text-transform: uppercase;
+    }
+
+    .notif .time {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .45);
+      flex-shrink: 0;
+    }
+
+    .notif .title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 2px;
+      line-height: 1.25;
+    }
+
+    .notif .msg {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, .7);
+      margin-top: 2px;
+      line-height: 1.4;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    /* Pill / chip */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(22, 22, 26, .82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--line-2);
+      font-size: 13px;
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+      white-space: nowrap;
+    }
+
+    .pill .pdot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 8px var(--brand);
+    }
+
+    .pill.blue .pdot {
+      background: var(--blue);
+      box-shadow: 0 0 8px var(--blue);
+    }
+
+    .pill.green .pdot {
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .pill.yellow .pdot {
+      background: var(--yellow);
+      box-shadow: 0 0 8px var(--yellow);
+    }
+
+    .pill.purple .pdot {
+      background: var(--purple);
+      box-shadow: 0 0 8px var(--purple);
+    }
+
+    .pill .meta {
+      color: rgba(255, 255, 255, .5);
+      font-size: 12px;
+    }
+
+    /* Label tag — looks like a category tag */
+    .label-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid var(--line-2);
+      font-size: 12px;
+      letter-spacing: .02em;
+      color: rgba(255, 255, 255, .85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    .label-tag.brand {
+      color: #fff;
+      background: rgba(255, 45, 85, .14);
+      border-color: rgba(255, 45, 85, .4);
+    }
+
+    /* Mini chip with check (fulfilled prophecy) */
+    .check-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px 7px 7px;
+      background: rgba(52, 199, 89, .1);
+      border: 1px solid rgba(52, 199, 89, .4);
+      border-radius: 999px;
+      font-size: 12.5px;
+      color: #fff;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .check-chip .ck {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #000;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 11px;
+      flex-shrink: 0;
+    }
+
+    .check-chip .meta {
+      color: rgba(255, 255, 255, .55);
+      font-size: 11px;
+      margin-left: 4px;
+    }
+
+    /* Waveform mini */
+    .wave-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px 8px 10px;
+      background: rgba(22, 22, 26, .85);
+      border: 1px solid rgba(255, 45, 85, .3);
+      border-radius: 999px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .wave-chip .rec {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 10px var(--brand);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .wave-chip .wave-bars {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 14px;
+    }
+
+    .wave-chip .wave-bars span {
+      width: 2px;
+      background: var(--brand-soft);
+      border-radius: 2px;
+      animation: wbar 1.2s ease-in-out infinite;
+    }
+
+    @keyframes wbar {
+
+      0%,
+      100% {
+        height: 20%;
+      }
+
+      50% {
+        height: 100%;
+      }
+    }
+
+    .wave-chip .label {
+      font-size: 12.5px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .wave-chip .time {
+      font-family: "Poppins";
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, .55);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Position helpers — desktop */
+    .f1 {
+      top: 12%;
+      left: 6%;
+      --dx: 12px;
+      --dy: -14px;
+      --rot: -3deg;
+      --rotd: 1.2deg;
+      animation-duration: 9s;
+    }
+
+    .f2 {
+      top: 8%;
+      right: 7%;
+      --dx: -10px;
+      --dy: -12px;
+      --rot: 4deg;
+      --rotd: 1.5deg;
+      animation-duration: 11s;
+    }
+
+    .f3 {
+      top: 38%;
+      left: 3%;
+      --dx: 14px;
+      --dy: 8px;
+      --rot: -6deg;
+      --rotd: 1.8deg;
+      animation-duration: 8.5s;
+    }
+
+    .f4 {
+      top: 30%;
+      right: 4%;
+      --dx: -12px;
+      --dy: 10px;
+      --rot: 5deg;
+      --rotd: 1.5deg;
+      animation-duration: 10s;
+    }
+
+    .f5 {
+      bottom: 14%;
+      left: 8%;
+      --dx: 10px;
+      --dy: -10px;
+      --rot: -4deg;
+      --rotd: 1.3deg;
+      animation-duration: 12s;
+    }
+
+    .f6 {
+      bottom: 18%;
+      right: 6%;
+      --dx: -14px;
+      --dy: -8px;
+      --rot: 6deg;
+      --rotd: 1.6deg;
+      animation-duration: 9.5s;
+    }
+
+    .f7 {
+      top: 22%;
+      left: 22%;
+      --dx: 8px;
+      --dy: -8px;
+      --rot: -8deg;
+      --rotd: 2deg;
+      animation-duration: 13s;
+    }
+
+    .f8 {
+      top: 18%;
+      right: 24%;
+      --dx: -8px;
+      --dy: 10px;
+      --rot: 7deg;
+      --rotd: 1.6deg;
+      animation-duration: 10.5s;
+    }
+
+    .f9 {
+      bottom: 24%;
+      left: 24%;
+      --dx: 10px;
+      --dy: 10px;
+      --rot: -5deg;
+      --rotd: 1.4deg;
+      animation-duration: 11.5s;
+    }
+
+    .f10 {
+      bottom: 10%;
+      right: 22%;
+      --dx: -10px;
+      --dy: 8px;
+      --rot: 4deg;
+      --rotd: 1.6deg;
+      animation-duration: 9s;
+    }
+
+    .f11 {
+      top: 50%;
+      left: 1%;
+      --dx: 8px;
+      --dy: -12px;
+      --rot: -10deg;
+      --rotd: 1deg;
+      animation-duration: 14s;
+    }
+
+    .f12 {
+      top: 52%;
+      right: 1%;
+      --dx: -8px;
+      --dy: -10px;
+      --rot: 8deg;
+      --rotd: 1deg;
+      animation-duration: 13s;
+    }
+
+    /* ─── Tablet ─── */
+    @media (max-width: 980px) {
+      .top-logo {
+        top: 22px;
+        left: 22px;
+      }
+
+      .top-logo img {
+        height: 20px;
+      }
+
+      .notif {
+        width: 240px;
+      }
+
+      .f7,
+      .f8,
+      .f9,
+      .f10 {
+        display: none;
+      }
+
+      .f1 {
+        top: 6%;
+        left: 4%;
+      }
+
+      .f2 {
+        top: 4%;
+        right: 4%;
+      }
+
+      .f3 {
+        top: 34%;
+        left: -2%;
+      }
+
+      .f4 {
+        top: 28%;
+        right: -2%;
+      }
+
+      .f5 {
+        bottom: 10%;
+        left: 2%;
+      }
+
+      .f6 {
+        bottom: 12%;
+        right: 2%;
+      }
+
+      .f11 {
+        top: 56%;
+        left: -4%;
+      }
+
+      .f12 {
+        top: 58%;
+        right: -4%;
+      }
+    }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 640px) {
+      .center {
+        padding: 0 18px;
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(34px, 11vw, 56px);
+        margin-bottom: 18px;
+        line-height: 1;
+      }
+
+      p.lead {
+        font-size: 14.5px;
+        margin-bottom: 26px;
+        max-width: 360px;
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        margin-bottom: 22px;
+        padding: 5px 12px 5px 7px;
+      }
+
+      .appstore-btn {
+        padding: 12px 22px;
+        gap: 10px;
+      }
+
+      .appstore-btn svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .appstore-btn .big {
+        font-size: 17px;
+      }
+
+      .top-logo {
+        top: 18px;
+        left: 18px;
+      }
+
+      .top-logo img {
+        height: 18px;
+      }
+
+      .bot-mark {
+        display: none;
+      }
+
+      .social-links {
+        bottom: 14px;
+        left: 14px;
+        gap: 12px;
+      }
+
+      .social-links svg {
+        width: 13px;
+        height: 13px;
+      }
+
+      .foot-links {
+        bottom: 14px;
+        right: 14px;
+        left: 46px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 8px 10px;
+        font-size: 10.5px;
+      }
+
+      .foot-links .sep {
+        width: 2px;
+        height: 2px;
+      }
+
+      /* Compact floaters: smaller notif, tighter pills */
+      .notif {
+        width: 180px;
+        padding: 9px 10px;
+        gap: 9px;
+        border-radius: 14px;
+      }
+
+      .notif .ic {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+      }
+
+      .notif .ic svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .notif .app {
+        font-size: 9.5px;
+      }
+
+      .notif .time {
+        font-size: 9.5px;
+      }
+
+      .notif .title {
+        font-size: 11.5px;
+      }
+
+      .notif .msg {
+        font-size: 10.5px;
+        -webkit-line-clamp: 2;
+      }
+
+      .pill {
+        font-size: 11px;
+        padding: 6px 11px;
+        gap: 6px;
+      }
+
+      .pill .pdot {
+        width: 6px;
+        height: 6px;
+      }
+
+      .pill .meta {
+        font-size: 10px;
+      }
+
+      .label-tag {
+        font-size: 13px;
+        padding: 4px 10px;
+      }
+
+      .check-chip {
+        font-size: 11px;
+        padding: 5px 10px 5px 5px;
+      }
+
+      .check-chip .ck {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+      }
+
+      .check-chip .meta {
+        font-size: 10px;
+      }
+
+      .wave-chip {
+        padding: 6px 11px 6px 8px;
+        gap: 7px;
+      }
+
+      .wave-chip .label {
+        font-size: 11px;
+      }
+
+      .wave-chip .time {
+        font-size: 10px;
+      }
+
+      .wave-chip .wave-bars {
+        height: 11px;
+      }
+
+      /* Hide secondary clutter on phones — keep frame readable */
+      .f7,
+      .f8,
+      .f9,
+      .f10,
+      .f11,
+      .f12 {
+        display: none;
+      }
+
+      /* 4 floaters at the corners + 2 mid-edges, hugging the edges */
+      .f1 {
+        top: 9%;
+        left: 3%;
+        --dx: 6px;
+        --dy: -8px;
+      }
+
+      .f2 {
+        top: 7%;
+        right: 3%;
+        --dx: -6px;
+        --dy: -8px;
+      }
+
+      .f3 {
+        top: 42%;
+        left: -22%;
+        --dx: 8px;
+        --dy: 6px;
+      }
+
+      /* peek in from edge */
+      .f4 {
+        top: 38%;
+        right: -22%;
+        --dx: -8px;
+        --dy: 6px;
+      }
+
+      .f5 {
+        bottom: 8%;
+        left: 3%;
+        --dx: 6px;
+        --dy: -6px;
+      }
+
+      .f6 {
+        bottom: 10%;
+        right: 3%;
+        --dx: -6px;
+        --dy: -6px;
+      }
+    }
+
+    /* ─── Very small / portrait phones ─── */
+    @media (max-width: 400px) {
+      h1 {
+        font-size: clamp(30px, 11vw, 44px);
+      }
+
+      .social-links {
+        left: 12px;
+      }
+
+      .foot-links {
+        right: 10px;
+        left: 42px;
+        gap: 6px 8px;
+        font-size: 9.5px;
+      }
+
+      .notif {
+        width: 160px;
+      }
+
+      .f3,
+      .f4 {
+        display: none;
+      }
+
+      .f1 {
+        top: 7%;
+        left: 2%;
+      }
+
+      .f2 {
+        top: 5%;
+        right: 2%;
+      }
+
+      .f5 {
+        bottom: 7%;
+        left: 2%;
+      }
+
+      .f6 {
+        bottom: 9%;
+        right: 2%;
+      }
+    }
+
+    /* ─── Short viewports (landscape phones) ─── */
+    @media (max-height: 640px) and (max-width: 900px) {
+      .center {
+        transform: scale(.92);
+      }
+
+      h1 {
+        margin-bottom: 14px;
+      }
+
+      p.lead {
+        margin-bottom: 20px;
+      }
+
+      .eyebrow {
+        margin-bottom: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stage" data-screen-label="01 Hero">
+
+    <a href="#" class="top-logo">
+      <img src="assets/logo_schrift_weis.png" alt="PHONĒ">
+    </a>
+
+    <!-- Connection threads (SVG) -->
+    <svg class="threads" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <!-- left side threads -->
+      <path class="thread-line brand" d="M 8 14 Q 25 28, 38 42" />
+      <path class="thread-line" d="M 8 14 Q 18 32, 6 50" />
+      <path class="thread-line green" d="M 6 50 Q 22 60, 10 86" />
+      <path class="thread-line" d="M 5 40 Q 22 30, 24 24" />
+      <path class="thread-line blue" d="M 5 40 Q 28 50, 26 78" />
+      <path class="thread-line" d="M 10 86 Q 26 80, 26 78" />
+
+      <!-- right side threads -->
+      <path class="thread-line blue" d="M 92 10 Q 78 24, 64 42" />
+      <path class="thread-line" d="M 92 10 Q 96 30, 94 50" />
+      <path class="thread-line" d="M 94 50 Q 80 68, 92 84" />
+      <path class="thread-line brand" d="M 94 32 Q 78 24, 76 22" />
+      <path class="thread-line green" d="M 94 32 Q 72 50, 76 78" />
+      <path class="thread-line" d="M 92 84 Q 78 80, 76 78" />
+
+      <!-- cross-connectors top to center area -->
+      <path class="thread-line" d="M 38 42 Q 50 30, 64 42" />
+      <path class="thread-line" d="M 26 78 Q 50 86, 76 78" />
+
+      <!-- dots at thread joints -->
+      <circle class="thread-dot brand" cx="8" cy="14" r=".7" />
+      <circle class="thread-dot" cx="6" cy="50" r=".55" />
+      <circle class="thread-dot green" cx="10" cy="86" r=".7" />
+      <circle class="thread-dot blue" cx="92" cy="10" r=".7" />
+      <circle class="thread-dot" cx="94" cy="50" r=".55" />
+      <circle class="thread-dot yellow" cx="92" cy="84" r=".7" />
+      <circle class="thread-dot" cx="38" cy="42" r=".5" />
+      <circle class="thread-dot" cx="64" cy="42" r=".5" />
+      <circle class="thread-dot purple" cx="26" cy="78" r=".55" />
+      <circle class="thread-dot purple" cx="76" cy="78" r=".55" />
+      <circle class="thread-dot brand" cx="24" cy="24" r=".5" />
+      <circle class="thread-dot brand" cx="76" cy="22" r=".5" />
+    </svg>
+
+    <!-- ── Floating items ── -->
+
+    <!-- Top-left: notification -->
+    <div class="floater f1">
+      <div class="notif">
+        <div class="ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect x="9" y="2" width="6" height="11" rx="3" />
+            <path d="M5 10v2a7 7 0 0 0 14 0v-2" />
+            <line x1="12" y1="19" x2="12" y2="22" />
+          </svg>
+        </div>
+        <div class="body">
+          <div class="row">
+            <span class="app">PHONĒ</span>
+            <span class="time">jetzt</span>
+          </div>
+          <div class="title">Aufnahme analysiert</div>
+          <div class="msg">"Wasser, Tür aus Licht" — 3 Symbole erkannt</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top-right: notification (connection) -->
+    <div class="floater f2">
+      <div class="notif">
+        <div class="ic blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round">
+            <circle cx="6" cy="6" r="2" />
+            <circle cx="18" cy="18" r="2" />
+            <circle cx="18" cy="6" r="2" />
+            <path d="m8 7 8 10M16 7 8 17" />
+          </svg>
+        </div>
+        <div class="body">
+          <div class="row">
+            <span class="app">Verbindung</span>
+            <span class="time">vor 2 min</span>
+          </div>
+          <div class="title">3 ähnliche Träume gefunden</div>
+          <div class="msg">Symbol "Wasser" taucht erneut auf</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mid-left: wave chip (recording) -->
+    <div class="floater f3">
+      <div class="wave-chip">
+        <span class="rec"></span>
+        <div class="wave-bars">
+          <span style="animation-delay:0s"></span>
+          <span style="animation-delay:.1s"></span>
+          <span style="animation-delay:.2s"></span>
+          <span style="animation-delay:.3s"></span>
+          <span style="animation-delay:.15s"></span>
+          <span style="animation-delay:.05s"></span>
+          <span style="animation-delay:.25s"></span>
+        </div>
+        <span class="label">Aufnahme läuft</span>
+        <span class="time">00:42</span>
+      </div>
+    </div>
+
+    <!-- Mid-right: check chip (fulfilled) -->
+    <div class="floater f4">
+      <div class="check-chip">
+        <span class="ck">✓</span>
+        <span>Prophetie erfüllt</span>
+        <span class="meta">12. Mai</span>
+      </div>
+    </div>
+
+    <!-- Bottom-left: pill -->
+    <div class="floater f5">
+      <div class="pill green">
+        <span class="pdot"></span>
+        <span>Traum · 18. März</span>
+        <span class="meta">3 Symbole</span>
+      </div>
+    </div>
+
+    <!-- Bottom-right: notification (assistant) -->
+    <div class="floater f6">
+      <div class="notif">
+        <div class="ic green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <div class="body">
+          <div class="row">
+            <span class="app">Erfüllung</span>
+            <span class="time">heute</span>
+          </div>
+          <div class="title">"Reise nach Süden" eingetreten</div>
+          <div class="msg">Verknüpft mit 2 Belegen aus deinem Archiv</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inner pills: serif tags -->
+    <div class="floater f7">
+      <div class="label-tag brand">Wasser</div>
+    </div>
+    <div class="floater f8">
+      <div class="label-tag">Adler</div>
+    </div>
+    <div class="floater f9">
+      <div class="label-tag">Tür aus Licht</div>
+    </div>
+    <div class="floater f10">
+      <div class="pill purple">
+        <span class="pdot"></span>
+        <span>Symbol gelernt</span>
+      </div>
+    </div>
+
+    <!-- Far-edge minor pills -->
+    <div class="floater f11">
+      <div class="pill blue">
+        <span class="pdot"></span>
+        <span>+12 Verbindungen</span>
+      </div>
+    </div>
+    <div class="floater f12">
+      <div class="pill yellow">
+        <span class="pdot"></span>
+        <span>Neuer Eintrag</span>
+      </div>
+    </div>
+
+    <!-- Center content -->
+    <div class="center">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span>Jetzt im App Store verfügbar</span>
+      </div>
+      <h1>
+        Halte fest, was<br>
+        der <span class="serif accent">Himmel</span> dir sagt.
+      </h1>
+      <p class="lead">
+        Mach aus einzelnen Momenten eine Geschichte: <br> deine Geschichte mit Gott.
+      </p>
+      <a href="https://apps.apple.com/de/app/phonē-träume-prophetien/id6746813152" class="appstore-btn">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#000">
+          <path
+            d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+        </svg>
+        <div>
+          <div class="small">Lade es im</div>
+          <div class="big">App Store</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="bot-mark">PHONĒ · Steward God´s Voice</div>
+
+    <div class="social-links" aria-label="Social Media">
+      <a href="https://www.instagram.com/phoneapp.de/" target="_blank" rel="noopener" aria-label="Instagram phoneapp.de">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </a>
+    </div>
+
+    <div class="foot-links">
+      <a href="legal/impressum.html">Impressum</a>
+      <span class="sep"></span>
+      <a href="legal/datenschutz.html">Datenschutz</a>
+      <span class="sep"></span>
+      <a href="legal/agb.html">Nutzungsbedingungen</a>
+      <span class="sep"></span>
+      <a href="legal/kontakt.html">Kontakt &amp; Support</a>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
