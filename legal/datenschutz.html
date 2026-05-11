@@ -69,7 +69,7 @@
 
     <h2 id="a3"><span class="num">03.</span> Audio‑Aufnahmen &amp; KI‑Analyse</h2>
     <p>
-      Audio‑Dateien werden Ende‑zu‑Ende‑verschlüsselt zu unseren Servern übertragen. Die Transkription erfolgt durch <strong>OpenAI Whisper</strong> (OpenAI L.L.C., USA); die anschließende inhaltliche Analyse (Symbole, Bibelverse, Reflexionsfragen) durch <strong>Qwen AI</strong> (Alibaba Cloud, EU/Worldwide). Beide Anbieter verarbeiten deine Daten ausschließlich im Auftrag und löschen sie nach der Verarbeitung.
+      Audio‑Dateien werden über verschlüsselte TLS‑Verbindungen zu unseren Servern übertragen und in Firebase verschlüsselt gespeichert. Die Transkription erfolgt durch <strong>OpenAI Whisper</strong> (OpenAI L.L.C., USA); die anschließende inhaltliche Analyse (Symbole, Bibelverse, Reflexionsfragen) erfolgt durch <strong>Qwen AI</strong> (Alibaba Cloud, EU/Worldwide). Funktionen wie AI Assistant, Chat und bestimmte Reflexions‑Features können außerdem <strong>Google AI / Gemini</strong> nutzen. Die Anbieter verarbeiten deine Daten zur Erbringung der jeweiligen Funktion.
     </p>
     <h3>Speicherort</h3>
     <p>Aufnahmen und Transkripte werden in <strong>Firebase Storage</strong> (Region <code>europe-west3</code>, Frankfurt) gespeichert.</p>
@@ -88,7 +88,7 @@
 
     <h3>Einwilligungsmanagement</h3>
     <p>
-      Beim ersten Start der App wirst du aktiv um Einwilligung gebeten für: die Verarbeitung deiner Audio‑/Textdaten durch KI‑Drittanbieter sowie den internationalen Datentransfer (USA/China). Du kannst deine Einwilligung jederzeit in den App‑Einstellungen widerrufen oder uns kontaktieren.
+      Nach der Anmeldung wirst du in der App aktiv um Zustimmung zu den aktuellen Rechtstexten und um eine gesonderte Einwilligung für die Verarbeitung deiner Audio‑/Textdaten durch KI‑Drittanbieter gebeten. Ohne diese KI‑Einwilligung werden Transkription, Übersetzung, Analyse und AI‑Chat nicht ausgeführt. Du kannst deine KI‑Einwilligung jederzeit in den App‑Einstellungen widerrufen oder uns kontaktieren.
     </p>
 
     <h2 id="a5"><span class="num">05.</span> Drittanbieter &amp; Auftragsverarbeiter</h2>
@@ -96,6 +96,7 @@
       <li><strong>Google Firebase</strong> (Authentication, Firestore, Storage, Functions) — Google Ireland Ltd.</li>
       <li><strong>OpenAI</strong> (Whisper Transkription) — Auftragsverarbeitung gemäß Art. 28 DSGVO.</li>
       <li><strong>Qwen AI / Alibaba Cloud</strong> (KI‑Analyse) — Alibaba Cloud, EU/Worldwide. Für Transfers außerhalb der EU gelten Standardvertragsklauseln (SCCs). Auftragsverarbeitung gemäß Art. 28 DSGVO.</li>
+      <li><strong>Google AI / Gemini</strong> (AI Assistant, Chat und Reflexionsfunktionen) — Google Ireland Ltd. bzw. verbundene Google‑Gesellschaften, soweit die jeweilige Funktion dies erfordert.</li>
       <li><strong>Apple App Store / Apple Sign‑in</strong> — Apple Distribution Intl.</li>
       <li><strong>RevenueCat</strong> (Abo‑Verwaltung Premium) — RevenueCat Inc., USA, Standardvertragsklauseln.</li>
     </ul>
