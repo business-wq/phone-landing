@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      ".git/**",
+      ".github/**",
+      "**/node_modules/**",
+      "*.jsx",
+      "variants/**",
+      "index Kopie.html",
+      "Dockerfile",
+      "nginx.conf"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
